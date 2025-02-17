@@ -3,27 +3,28 @@ import "./styles.css";
 
 const content = [
     [
-        "React is extremely popular",
-        "It makes building complex, interactive UIs a breeze",
-        "It's powerful & flexible",
-        "It has a very active and versatile ecosystem"
+        "Basketball: Five players per team on the court",
+        "Games consist of four quarters, each lasting 12 minutes (NBA rules)",
+        "A shot made inside the arc is worth 2 points, beyond the arc is worth 3 points",
+        "A team has 24 seconds to attempt a shot"
     ],
     [
-        "Components, JSX & Props",
-        "State",
-        "Hooks (e.g., useEffect())",
-        "Dynamic rendering"
+        "Football: Each team has 11 players, including a goalkeeper",
+        "Matches are 90 minutes long, split into two 45-minute halves",
+        "Offside rule prevents attackers from receiving the ball too close to the goal",
+        "A goal is scored when the entire ball crosses the goal line"
     ],
     [
-        "Official web page (react.dev)",
-        "Next.js (Fullstack framework)",
-        "React Native (build native mobile apps with React)"
+        "Tennis: Matches can be singles (1v1) or doubles (2v2)",
+        "A set is won by the first player to win 6 games with a 2-game lead",
+        "Scoring: 15, 30, 40, and then game point",
+        "A ball is in play until it bounces twice or goes out of bounds"
     ],
     [
-        "Vanilla JavaScript requires imperative programming",
-        "Imperative Programming: You define all the steps needed to achieve a result",
-        "React on the other hand embraces declarative programming",
-        "With React, you define the goal and React figures out how to get there"
+        "Baseball: Each team has 9 players on the field",
+        "A game consists of 9 innings, with each team batting once per inning",
+        "Batters advance by hitting the ball and running bases before being tagged out",
+        "A home run is scored when the ball is hit out of the field of play"
     ]
 ];
 
@@ -35,26 +36,28 @@ function but() {
             <div id="tabs">
                 <menu>
                     <button onClick={() => setNum(0)} className={num === 0 ? "active" : ""}>
-                        Why React?
+                        Basketball
                     </button>
-
                     <button onClick={() => setNum(1)} className={num === 1 ? "active" : ""}>
-                        Why React?
+                        Football
                     </button>
-
                     <button onClick={() => setNum(2)} className={num === 2 ? "active" : ""}>
-                        Why React?
+                        Tennis
                     </button>
                     <button onClick={() => setNum(3)} className={num === 3 ? "active" : ""}>
-                        Why React?
+                        Baseball
                     </button>
                 </menu>
                 <div id="tab-content">
-
+                    <ul>
+                        {content[num].map((arr, index) => (
+                            <li key={index}>{arr}</li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 export default but;
