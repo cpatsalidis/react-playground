@@ -1,16 +1,39 @@
+import { useState } from 'react'
+
 type X = {
-    player: String
-    symbol: String
+    initialName: string
+    symbol: string
 }
 
-function Player({ player, symbol }: X) {
+function Player({ initialName, symbol }: X) {
+    let [isEditing, setIsEditing] = useState(false);
+    let [name, setname] = useState(initialName)
+
+    function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+        setname(n => n = e.target.value)
+    }
+
+    function handleEditClick() {
+        if (!name) {
+            setname(n => n = initialName);
+        }
+        setIsEditing(editing => !editing)
+    }
+
+    let playerName = <span className="player-name">{name}</span>
+
+
+    if (isEditing) {
+        playerName = <input type="text" onChange={handleInputChange} value={name} required></input>
+    }
+
     return (
         <li>
-            <span id="player">
-                <span className="player-name">{player}</span>
+            <span className="player">
+                {playerName}
                 <span className="player-symbol">{symbol}</span>
             </span>
-            <button>Edit</button>
+            <button onClick={handleEditClick}>{isEditing ? 'Save' : 'Edit'}</button>
         </li>
     )
 }
