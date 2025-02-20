@@ -3,9 +3,10 @@ import { useState } from 'react'
 type X = {
     initialName: string
     symbol: string
+    active: boolean
 }
 
-function Player({ initialName, symbol }: X) {
+function Player({ initialName, symbol, active }: X) {
     let [isEditing, setIsEditing] = useState(false);
     let [name, setname] = useState(initialName)
 
@@ -28,7 +29,7 @@ function Player({ initialName, symbol }: X) {
     }
 
     return (
-        <li>
+        <li className={active ? 'active' : ''}>
             <span className="player">
                 {playerName}
                 <span className="player-symbol">{symbol}</span>
