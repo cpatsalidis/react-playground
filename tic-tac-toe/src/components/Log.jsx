@@ -1,8 +1,8 @@
 function Log({ currentLog }) {
     return (
-        <ol>
+        <ol id="log">
             {currentLog.map((info, index) => {
-                return <li key={index}>{info.square.col}</li>
+                return <li className="highlighted" key={index}>{info.square.col}</li>
             })}
         </ol>
     )
