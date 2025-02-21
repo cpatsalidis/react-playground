@@ -1,12 +1,25 @@
+import { useState } from 'react'
 import Player from './components/Player'
 import GameBoard from './components/GameBoard'
-import { useState } from 'react'
+import Log from './components/Log'
+
+
 
 function App() {
   let [turn, setTurn] = useState('X')
+  let [log, setLog] = useState([]);
 
-  function handleTurn() {
+  function handleTurn(rowIndex, colIndex) {
     setTurn(t => t === 'X' ? 'O' : 'X')
+    setLog(prevLog => {
+      let player = 'X'
+
+      if (prevLog.length > 0 && prevLog[0].active === 'X') player = 'O'
+
+      let newLog = [{ square: { row: rowIndex, col: colIndex }, active: player, isPressed: true }, ...prevLog]
+
+      return newLog
+    })
   }
 
   return (
@@ -17,7 +30,8 @@ function App() {
           <Player initialName="Player 2" symbol="O" active={turn === 'O'} />
         </ol>
 
-        <GameBoard onSelectSquare={handleTurn} activePlayer={turn} />
+        <GameBoard onSelectSquare={handleTurn} turns={log} />
+        <Log currentLog={log} />
       </div>
     </main>
   )

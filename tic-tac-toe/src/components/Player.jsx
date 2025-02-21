@@ -1,16 +1,10 @@
 import { useState } from 'react'
 
-type X = {
-    initialName: string
-    symbol: string
-    active: boolean
-}
-
-function Player({ initialName, symbol, active }: X) {
+function Player({ initialName, symbol, active }) {
     let [isEditing, setIsEditing] = useState(false);
     let [name, setname] = useState(initialName)
 
-    function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleInputChange(e) {
         setname(n => n = e.target.value)
     }
 
